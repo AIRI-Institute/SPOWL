@@ -1,0 +1,81 @@
+name: spowl
+
+replay_buffer:
+  capacity: 1_000_000
+
+policy:
+  eval: plan
+  train: plan
+
+world_model:
+  num_enc_layers: 2
+  enc_dim: 256
+  latent_dim: 512
+  simnorm_dim: 8
+  mlp_dim: 512
+  num_bins: 101
+  num_c: 5
+  cm_dropout: 0.0
+  num_q: 5
+  dropout: 0.01
+  log_std_min: -10
+  log_std_max: 2
+  penalty_multiplier_init: 5e-9
+  lagrange_multiplier_init: 1e-6
+  vmin: -10
+  vmax: +10
+  c_random_agg: 5
+  use_cost: true
+  use_decoder: false
+
+opt:
+  lr: 3e-4
+  enc_lr_scale: 0.3
+  grad_clip_norm: 20
+  cost_lr: 3e-4
+
+cost_model:
+  upd: false
+  use_custom_init: false
+  last_zero: false
+  cost_mlp_act: mish
+  cm_dropout: 0.01
+  cm_enc_dim: 256
+  cm_enc_layers: 2
+  cm_enc_act: simnorm
+  cm_simnorm_dim: 8
+  cm_state_dim: 256
+  cm_dim: 256
+  cm_layers: 3
+  cm_dyn_act: identity
+
+planning:
+  horizon: 3
+  num_pi_trajs: 24
+  num_samples: 512
+  min_std: 0.05
+  max_std: 2
+  plan_method: adaptive
+  num_elites: 64
+  temperature: 0.5
+  momentum: 0
+  iterations: 6
+  threshold: 0.1
+  use_local_cost: true # for CCEM
+  bootstrap_samples: 1000
+  bootstrap_ci: 95
+  use_ci_thresholds: false
+  restrict_elites: true
+  restrict_action: true
+  use_cm: false
+  use_cost: true
+
+cost_model_upd:
+  batch_size: 256
+  n_updates: 1000
+  horizon: 3
+  imbalance_weight: 0
+  cost_threshold: 0.1
+  tol: 0.5
+  cost_weight: 1
+  predict_weight: 0.1

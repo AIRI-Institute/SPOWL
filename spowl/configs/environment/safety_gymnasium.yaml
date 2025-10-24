@@ -1,0 +1,2 @@
+safety_gymnasium:
+  task: SafetyPointGoal1-v0

@@ -45,7 +45,15 @@ Get started with SPOWL:
 
 ## Usage
 
-Coming soon
+Run the training script to display all available options and configurations with:
+```bash
+python train.py --help
+```
+
+Run the training script to train default SPOWL configuration:
+```bash
+python train.py
+```
 
 ## SPOWL in some tasks
 

@@ -1,0 +1,59 @@
+defaults:
+  - _self_
+  - agent: spowl
+  - environment: safety_gymnasium
+
+hydra:
+  run:
+    dir: ${log_dir}/${now:%Y-%m-%d}/${now:%H-%M-%S}
+
+log_dir: outputs
+
+writers:
+  # - wandb
+  - jsonl
+  - stderr
+
+wandb:
+  group: null
+  notes: null
+  name: ${hydra:job.override_dirname}
+
+training:
+  trainer: online
+  seed: 0
+  time_limit: 1000
+  action_repeat: 5
+  parallel_envs: 10
+  episodes_per_epoch: 5 # with max length in each process
+  epochs: 100
+  render_episodes: 0
+  exploration_steps: 5000
+  tau: 0.01
+  gamma: 0.975
+  collect_steps: 100 # raw steps per_env (should x action repeat)
+  train_every: 5000
+
+upd:
+  cost_discount: 0.997
+  cvalue_target: avg
+  loss_coefs:
+    consistency_loss: 20
+    reward_loss: 0.1
+    cost_loss: 0.1
+    value_loss: 0.1
+    cvalue_loss: 0.1
+    decoder_loss: 0.0
+  entropy_coef: 1e-4
+  minimal_cost: 0
+  cost_imb_weight: 10
+  rho: 0.5
+  use_lagrange: true
+  lag_cost_type: avg
+  cost_limit: 0.1
+  lagrange_max: 10
+  penalty_rate: 5e-6
+  batch_size: 256
+  num_steps_per_update: 1000
+  tau: 0.01
+
