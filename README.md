@@ -1,9 +1,26 @@
 # Safe Planning and Policy Optimization via World Model Learning
 
+[![arXiv](https://img.shields.io/badge/arXiv-2506.04828-b31b1b.svg)](https://arxiv.org/abs/2506.04828)
+[![Python](https://img.shields.io/badge/python-3.10-blue.svg)](https://www.python.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Equinox](https://img.shields.io/badge/Framework-Equinox-ffca28.svg)](https://docs.kidger.site/equinox/)
+[![Conda](https://img.shields.io/badge/Environment-miniconda-blue.svg)](https://www.anaconda.com/docs/getting-started/miniconda/install#quickstart-install-instructions)
+[![DOI](https://img.shields.io/badge/doi-10.3233%2FFAIA251029-green?style=flat)](https://dx.doi.org/10.3233/FAIA251029)
+
+---
+
+## Overview
+
+**SPOWL** (*Safe Planning and Policy Optimization via World Model Learning*) is a framework for **safe reinforcement learning** that unifies **world model learning** and **policy optimization**. It leverages latent-space dynamics modeling and constrained optimization to achieve safe and efficient learning in complex continuous control environments.
+
+---
+
 ## Requirements
 
 - **Python**
 - **[miniconda/conda](https://www.anaconda.com/docs/getting-started/miniconda/install#quickstart-install-instructions)**
+
+---
 
 ## Installation
 
@@ -43,6 +60,8 @@ Get started with SPOWL:
    pip install --no-cache-dir gymnasium-robotics==1.2.3 numpy==1.25.0
    ```
 
+---
+
 ## Usage
 
 Run the training script to display all available options and configurations with:
@@ -54,6 +73,8 @@ Run the training script to train default SPOWL configuration:
 ```bash
 python train.py
 ```
+
+---
 
 ## SPOWL in some tasks
 
@@ -77,6 +98,8 @@ python train.py
 
 ### Ant Goal 1
 ![Ant Goal 1](media/ant_goal1.gif)
+
+---
 
 ## Citation
 
